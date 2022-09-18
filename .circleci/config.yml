@@ -14,10 +14,12 @@ jobs:
             echo "This is application repo"
             git config user.email "demo@gmail.com"
             git config user.name "CircleCI Job"
+            ls -la
+            sed 's/__NGINXTAG__/applatest/g' helm/values.${APP_ENV}.yaml
+            git add -A
             git commit --allow-empty -am "Automatic commit from APP build step of CircleCI [skip ci]"
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             git push
-            rm -r /tmp/ssh-temp/
 
   helm-change:
     docker:
@@ -33,10 +35,12 @@ jobs:
             echo "This is Helm repo"
             git config user.email "demo@gmail.com"
             git config user.name "CircleCI Job"
+            ls -la
+            sed 's/__NGINXTAG__/helmlatest/g' helm/values.${APP_ENV}.yaml
+            git add -A
             git commit --allow-empty -am "Automatic commit from Helm change build step of CircleCI [skip ci]"
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             git push
-            rm -r /tmp/ssh-temp/
 
 workflows:
   generate-config:
