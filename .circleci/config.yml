@@ -11,7 +11,7 @@ jobs:
       - run:
           name: "Building Hello World"
           command: |
-            "echo This is application repo"
+            echo "This is application repo"
             git config user.email "demo@gmail.com"
             git config user.name "CircleCI Job"
             git commit --allow-empty -am "Automatic commit from APP build step of CircleCI [skip ci]"
@@ -30,7 +30,7 @@ jobs:
       - run:
           name: "Hello Repo"
           command: |
-            "echo This is Helm repo"
+            echo "This is Helm repo"
             git config user.email "demo@gmail.com"
             git config user.name "CircleCI Job"
             git commit --allow-empty -am "Automatic commit from Helm change build step of CircleCI [skip ci]"
