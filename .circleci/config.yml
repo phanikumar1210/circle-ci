@@ -36,7 +36,8 @@ jobs:
             git config user.email "demo@gmail.com"
             git config user.name "CircleCI Job"
             ls -la
-            sed 's/__NGINXTAG__/helmlatest/g' helm/values.${APP_ENV}.yaml
+            echo ${APP_ENV}
+            sed -i 's/__NGINXTAG__/helmlatest/g' helm/values.${APP_ENV}.yaml
             git add -A
             git commit --allow-empty -am "Automatic commit from Helm change build step of CircleCI [skip ci]"
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
